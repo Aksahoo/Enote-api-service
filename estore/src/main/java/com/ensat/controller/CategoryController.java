@@ -4,9 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.ObjectUtils;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,26 +34,33 @@ public class CategoryController {
 	}
 
 	@GetMapping("/listCategory")
-	public ResponseEntity<?> getlistCategory(){
+	public ResponseEntity<?> getlistCategory() {
 		List<CategoryDto> getlistcategory = categoryService.getAllCategory();
-		if(CollectionUtils.isEmpty(getlistcategory)) {
+		if (CollectionUtils.isEmpty(getlistcategory)) {
 			return ResponseEntity.noContent().build();
-		}
-		else {
+		} else {
 			return new ResponseEntity<>(getlistcategory, HttpStatus.OK);
 		}
 	}
+
 	@GetMapping("/activecategory")
-	public ResponseEntity<?> activeCategory(){
-	List<CategoryDto> activeCategory = categoryService.getActiveCategory();
-	 if(CollectionUtils.isEmpty(activeCategory)) {
-	return ResponseEntity.noContent().build();
-	 }
-	else {
-		return new ResponseEntity<>(activeCategory, HttpStatus.OK);
+	public ResponseEntity<?> activeCategory() {
+		List<CategoryDto> activeCategory = categoryService.getActiveCategory();
+		if (CollectionUtils.isEmpty(activeCategory)) {
+			return ResponseEntity.noContent().build();
+		} else {
+			return new ResponseEntity<>(activeCategory, HttpStatus.OK);
+		}
 	}
-	 }
-	 
+	@GetMapping("/{id}")
+	public ResponseEntity<?> categorydelete(@PathVariable Integer id) {
+		System.out.println("testttttttttttttts");
+		CategoryDto categoryDto = categoryService.getbycategoryId(id);
+
+		if (ObjectUtils.isEmpty(categoryDto)) {
+			return new ResponseEntity<>("Category not found with Id=" + id, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(categoryDto, HttpStatus.OK);
+
 	}
-		
-	
+}

@@ -16,6 +16,8 @@ public interface CategoryService {
 	
 	public List<CategoryDto> getActiveCategory();
 
-	public CategoryDto getById();
+	public CategoryDto getbycategoryId(Integer id);
+
+
 
 }

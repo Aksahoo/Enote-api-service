@@ -1,6 +1,7 @@
 package com.ensat.serviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,18 @@ public class CategoryServiceimpl implements CategoryService {
 		return activecategory;
 	}
 
+	@Override
+	public CategoryDto getbycategoryId(Integer id) {
+		Optional<Category> findByCatgeory = categoryRepository.findById(id);
+		if (findByCatgeory.isPresent()) {
+			Category category = findByCatgeory.get();
+			return mapper.map(category, CategoryDto.class);
+		}
+		return null;
+	}
+		
+
+	
 	
 
 }
