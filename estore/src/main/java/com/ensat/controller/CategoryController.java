@@ -38,9 +38,18 @@ public class CategoryController {
 		else {
 			return new ResponseEntity<>(getlistcategory, HttpStatus.OK);
 		}
-		
-		
 	}
+	@GetMapping("/activecategory")
+	public ResponseEntity<?> activeCategory(){
+	List<CategoryDto> activeCategory = categoryService.getActiveCategory();
+	 if(CollectionUtils.isEmpty(activeCategory)) {
+	return ResponseEntity.noContent().build();
+	 }
+	else {
+		return new ResponseEntity<>(activeCategory, HttpStatus.OK);
+	}
+	 }
+	 
+	}
+		
 	
-	
-}

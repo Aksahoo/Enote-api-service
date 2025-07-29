@@ -42,6 +42,13 @@ public class CategoryServiceimpl implements CategoryService {
 		return categoryDtoList;
 	}
 
+	@Override
+	public List<CategoryDto> getActiveCategory() {
+		List<Category> findByIsActiveTrue = categoryRepository.findByIsActiveTrue();
+		List<CategoryDto> activecategory = findByIsActiveTrue.stream().map(cat ->mapper.map(cat, CategoryDto.class)).toList();
+		return activecategory;
+	}
+
 	
 
 }

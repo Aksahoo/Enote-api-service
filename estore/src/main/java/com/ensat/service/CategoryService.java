@@ -12,5 +12,7 @@ public interface CategoryService {
 	public boolean saveCategory(CategoryDto categoryDto);
 
 	public List<CategoryDto> getAllCategory();
+	
+	public List<CategoryDto> getActiveCategory();
 
 }
