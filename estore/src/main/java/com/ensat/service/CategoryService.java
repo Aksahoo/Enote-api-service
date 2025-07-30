@@ -1,7 +1,6 @@
 package com.ensat.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -16,6 +15,14 @@ public interface CategoryService {
 	
 	public List<CategoryDto> getActiveCategory();
 
-	public CategoryDto getById();
+	public CategoryDto getbycategoryId(Integer id) throws Exception;
+
+	public Boolean  deletbyid(Integer id);
+	
+	public CategoryDto getCategoryByIds(Integer id);
+	
+	public Boolean updateCategory(Integer id,CategoryDto categoryDto);
+
+
 
 }
