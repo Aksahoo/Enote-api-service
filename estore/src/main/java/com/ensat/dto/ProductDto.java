@@ -1,6 +1,5 @@
 package com.ensat.dto;
 
-
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -12,22 +11,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryDto {
-
-
-	private Integer id;
+public class ProductDto {
 	private String name;
 
-	private String description;
-
+	private Integer quantity ;
+	
 	private Boolean isActive;
-
-	private Integer createdBy;
-
-	private Date createdOn;
-
-	private Integer updatedBy;
-
-	private Date updatedOn;
-
 }

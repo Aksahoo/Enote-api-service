@@ -1,4 +1,5 @@
 package com.ensat.entity;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,22 +9,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class Category extends BaseModel {
-
+@Getter
+@Setter
+public class Product extends BaseModel{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-
+	private Integer productId;
 	private String name;
 
-	private String description;
+	private Integer quantity ;
 	
 	private Boolean isActive;
-	
-	
 }

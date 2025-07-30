@@ -16,7 +16,13 @@ public interface CategoryService {
 	
 	public List<CategoryDto> getActiveCategory();
 
-	public CategoryDto getbycategoryId(Integer id);
+	public CategoryDto getbycategoryId(Integer id) throws Exception;
+
+	public Boolean  deletbyid(Integer id);
+	
+	public CategoryDto getCategoryByIds(Integer id);
+	
+	public Boolean updateCategory(Integer id,CategoryDto categoryDto);
 
 
 
