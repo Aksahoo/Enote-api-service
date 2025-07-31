@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ensat.dto.NotesDto;
 import com.ensat.service.NotesService;
-import com.ensat.util.CommonUtil;
 
 import org.springframework.web.bind.annotation.RestController;
 
