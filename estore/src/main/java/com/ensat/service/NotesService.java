@@ -1,15 +1,16 @@
 package com.ensat.service;
 
 
-import org.springframework.web.multipart.MultipartFile;
+import java.util.List;
 
+
+import com.ensat.dto.NoteListDto;
 import com.ensat.dto.NotesDto;
 
 
 public interface NotesService {
 	
 	public boolean savenote(NotesDto noteDto);
-	public Boolean saveNotes(NotesDto notesDto, MultipartFile file) throws Exception;
 	
-
+public List<NoteListDto> getNotesList();
 }
