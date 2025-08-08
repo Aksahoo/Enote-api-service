@@ -1,39 +1,44 @@
 package com.ensat.entity;
 
-
-
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import com.ensat.entity.UserStatus.UserStatusBuilder;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@EntityListeners(AuditingEntityListener.class)
-public class Notes extends BaseModel {
+@Builder
+@Entity
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer UserId;
 
-	private String title;
+	private String firstName;
 
-	private String description;
+	private String lastName;
+	private String email;
+	private String mobNo;
 	
-	
-		
-	}
+	private String password;
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="status_Id")
+	private UserStatus userStatuss;
 
+	
+
+}

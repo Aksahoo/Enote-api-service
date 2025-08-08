@@ -30,6 +30,8 @@ public class CategoryController {
 	@PostMapping("/savecategory")
 	public ResponseEntity<?> cratecategory(@RequestBody CategoryDto categoryDto) {
 		boolean saveCategory = categoryService.saveCategory(categoryDto);
+		
+		
 		if (saveCategory) {
 			return CommonUtil.createBuildResponseMessage("saved successfully", HttpStatus.CREATED);
 		} else {
@@ -62,10 +64,10 @@ public class CategoryController {
 	public ResponseEntity<?> getfegrByid(@PathVariable Integer id) throws Exception  {
 	CategoryDto categoryDto = categoryService.getbycategoryId(id);
 
-		if (ObjectUtils.isEmpty(categoryDto)) {
+		//if (ObjectUtils.isEmpty(categoryDto)) {
 			return new ResponseEntity<>("Category not found with Id=" + id, HttpStatus.NOT_FOUND);
-		}
-		return CommonUtil.createBuildResponse(categoryDto, HttpStatus.OK);
+		//}
+		//return CommonUtil.createBuildResponse(categoryDto, HttpStatus.OK);
 
 	}
 	@DeleteMapping("/{id}")

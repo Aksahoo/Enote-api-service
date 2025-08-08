@@ -35,4 +35,6 @@ public abstract class BaseModel {
 	
 	private Boolean isDeleted;
 	
+	private Date deleteon;
+	
 }
