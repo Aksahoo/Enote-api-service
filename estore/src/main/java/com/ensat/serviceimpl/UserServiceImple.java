@@ -11,7 +11,6 @@ import com.ensat.dto.EmailRequest;
 import com.ensat.dto.UserDto;
 import com.ensat.entity.User;
 import com.ensat.entity.UserStatus;
-import com.ensat.entity.UserStatus.UserStatusBuilder;
 import com.ensat.execption.ExistDataException;
 import com.ensat.repository.UserRepository;
 import com.ensat.service.UserService;
@@ -41,24 +40,27 @@ public class UserServiceImple implements UserService {
 		User saveUser = userRepository.save(user);
 		if (!ObjectUtils.isEmpty(saveUser)) {
 			// send email
-			emailSend(saveUser);
-			return true;
+			emailSend(saveUser); 
+			return true; 
 		}
 		return false;
 	}
 
+	@SuppressWarnings("unused")
 	private void emailSend(User saveUser) throws Exception {
 
-		String message="Hi,<b>[[username]]</b> "
-				+ "<br> Your account register sucessfully.<br>"
-				+"<br> Click the below link verify & Active your account <br>"
-				+"<a href='[[url]]'>Click Here</a> <br><br>"
-				+"Thanks,<br>Enotes.com";
-				
 
-		message = message.replace("[[username]]", saveUser.getFirstName());
-		message = message.replace("[[url]]", 
-				"http://localhost:8080/user/verify?uid=\"+saveUser.getId()+\"&&code=\"+saveUser.getStatus().getVerificationcode()");
+	    String message = "Hi,<b>[[username]]</b> "
+	            + "<br> Your account registered successfully.<br>"
+	            + "<br> Click the below link to verify & activate your account:<br>"
+	            + "<a href='[[url]]'>Click Here</a> <br><br>"
+	            + "Thanks,<br>Enotes.com";
+
+	    // Replace placeholders
+	    message = message.replace("[[username]]", saveUser.getFirstName());
+	   message= message.replace("[[url]]",
+	            "http://localhost:8080/home/verify?uid=" + saveUser.getUserId()
+	                    + "&&code=" + saveUser.getUserStatuss().getVerficationCode());
 
 		EmailRequest emailRequest = EmailRequest.builder().to(saveUser.getEmail())
 				.title("Account Creating Confirmation").subject("Account Created Success").message(message).build();
