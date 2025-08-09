@@ -1,3 +1,4 @@
+
 package com.ensat.entity;
 
 
@@ -36,4 +37,3 @@ public class Notes extends BaseModel {
 	
 		
 	}
-

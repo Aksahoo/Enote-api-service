@@ -1,3 +1,4 @@
+
 package com.ensat.execption;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -81,5 +82,3 @@ public class GlobalExceptionHandler {
 		log.error("GlobalExceptionHandler : handleBadCredentialsException() : {}", e.getMessage());
 		return CommonUtil.createErrorResponseMessage(e.getMessage(), HttpStatus.BAD_REQUEST);
 	}
-
-}

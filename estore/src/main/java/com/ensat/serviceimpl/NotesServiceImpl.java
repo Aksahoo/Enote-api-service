@@ -1,3 +1,4 @@
+
 package com.ensat.serviceimpl;
 
 import java.util.Date;
@@ -92,5 +93,3 @@ public class NotesServiceImpl implements NotesService {
 		return unfavourite.stream().map(fn -> mapper.map(fn, FavouriteNoteDto.class)).toList();
 
 	}
-
-}

@@ -1,3 +1,4 @@
+
 package com.ensat.entity;
 
 import java.util.Date;
