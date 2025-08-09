@@ -1,3 +1,4 @@
+
 package com.ensat.entity;
 
 import java.util.Date;
@@ -34,5 +35,7 @@ public abstract class BaseModel {
 	private Date updatedOn;
 	
 	private Boolean isDeleted;
+	
+	private Date deleteon;
 	
 }
